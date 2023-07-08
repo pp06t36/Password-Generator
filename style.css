@@ -1,0 +1,13 @@
+#password-one-el, #password-two-el {
+    cursor: pointer !important;
+    transition: background-color 0.3s ease;
+  }
+  
+  #password-one-el:hover, #password-two-el:hover {
+    background-color: lightgray;
+  }
+  
+  #password-one-el.clicked, #password-two-el.clicked {
+    background-color: yellow;
+  }
+  
