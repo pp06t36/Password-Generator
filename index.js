@@ -34,37 +34,38 @@ function generatePassword() {
   shuffleArray(symbols);
 
   // Generate passwordOne
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     let randomIndex = Math.floor(Math.random() * symbols.length);
     passwordOne += symbols[randomIndex];
   }
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     let randomIndex = Math.floor(Math.random() * charactersUpper.length);
     passwordOne += charactersUpper[randomIndex];
   }
-  for (let i = 0; i < passwordLength - 10; i++) { // Adjust the loop based on password length
+  for (let i = 0; i < passwordLength - 6; i++) {
     let randomIndex = Math.floor(Math.random() * charactersLower.length);
     passwordOne += charactersLower[randomIndex];
   }
-  for (let i = 0; i < 4; i++) {
+  
+  for (let i = 0; i < 2; i++) {
     let randomIndex = Math.floor(Math.random() * numbers.length);
     passwordOne += numbers[randomIndex];
   }
 
   // Generate passwordTwo
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     let randomIndex = Math.floor(Math.random() * symbols.length);
     passwordTwo += symbols[randomIndex];
   }
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     let randomIndex = Math.floor(Math.random() * charactersUpper.length);
     passwordTwo += charactersUpper[randomIndex];
   }
-  for (let i = 0; i < passwordLength - 10; i++) { // Adjust the loop based on password length
+  for (let i = 0; i < passwordLength - 6; i++) {
     let randomIndex = Math.floor(Math.random() * charactersLower.length);
     passwordTwo += charactersLower[randomIndex];
   }
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 2; i++) {
     let randomIndex = Math.floor(Math.random() * numbers.length);
     passwordTwo += numbers[randomIndex];
   }
@@ -78,32 +79,43 @@ const passwordLengthRange = document.getElementById("password-length-range");
 const passwordLengthValue = document.getElementById("password-length-value");
 
 // Add an event listener to the range selector
-passwordLengthRange.addEventListener("input", function() {
+passwordLengthRange.addEventListener("change", function() {
   // Update the displayed value
   passwordLengthValue.textContent = passwordLengthRange.value;
 });
 
 function copyPassword(elementId) {
   const passwordElement = document.getElementById(elementId);
-  const password = passwordElement.textContent;
+  const password = passwordElement.value;
 
   if (password) {
     navigator.clipboard.writeText(password)
       .then(() => {
+        const popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.textContent = "Password copied to clipboard";
+
+        document.body.appendChild(popup);
+
+        setTimeout(() => {
+          popup.remove();
+        }, 1000);
+
         console.log("Password copied to clipboard:", password);
-        // Optionally, you can display a success message or perform other actions
       })
       .catch((error) => {
         console.error("Failed to copy password:", error);
-        // Optionally, you can display an error message or handle the error
       });
   }
 }
 
-passwordOneEl.addEventListener("click", function() {
+
+passwordOneEl.addEventListener("focus", function() {
   copyPassword("password-one-el");
 });
 
-passwordTwoEl.addEventListener("click", function() {
+passwordTwoEl.addEventListener("focus", function() {
   copyPassword("password-two-el");
 });
+
+

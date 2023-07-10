@@ -2,8 +2,6 @@
 /* Custom properties   */
 /* ------------------- */
 
-
-
 :root {
     /* colors */
     --clr-dark: 0, 0%, 11%; /* Eerie Black */
@@ -18,9 +16,7 @@
     --clr-accent-two: 160, 84%, 39%; /* Mint */
     --clr-accent-three: 142, 93%, 65%; /* Spring green */
 
-  
   /* font-sizes */
-
   --fs-600: 2.5rem;
   --fs-500: 1.5rem;
   --fs-400: 1.25rem;
@@ -69,7 +65,6 @@ p {
 }
 
 /* set up the body */
-
 body {
   line-height: 1.5;
   min-height: 100vh;
@@ -82,7 +77,6 @@ body {
 /* ------------------- */
 
 /* general */
-
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
@@ -119,7 +113,6 @@ body {
   flex-direction: column;
 }
 
-
 .flow > *:where(:not(:first-child)) {
   margin-top: var(--flow-space, 1rem);
 }
@@ -141,6 +134,7 @@ body {
   text-align: center;
 }
 
+/* buttons */
 #gen-btn {
   background-color: hsl( var(--clr-accent-two) );
   padding: 5px 10px;
@@ -156,22 +150,18 @@ body {
 
 
 /* colors */
-
 .bg-dark { background-color: hsl( var(--clr-dark) );}
 .bg-dark-two { background-color: hsl( var(--clr-dark-two) );}
 .bg-dark-three { background-color: hsl( var(--clr-dark-three) );}
 .bg-dark-four { background-color: hsl( var(--clr-dark-four) );}
 .bg-accent { background-color: hsl( var(--clr-accent) );}
 
-
 .text-dark { color: hsl( var(--clr-dark) );}
 .text-accent { color: hsl( var(--clr-accent) );}
 .text-white { color: hsl( var(--clr-white) );}
 .text-light { color: hsl( var(--clr-light) );}
 
-
 /* typography */
-
 .ff-primary { font-family: var(--ff-primary); } 
 .ff-secondary { font-family: var(--ff-secondary); } 
 
@@ -206,6 +196,7 @@ body {
   line-height: 1.5;
 }
 
+/* custom containers */
 .container-main {
   margin: 3em 0;
   padding: 7em 3.25em;
@@ -222,6 +213,50 @@ body {
   margin-top: 2rem;
 }
 
+/* Password thumb and slider  */
+input[type="range"] {
+  -webkit-appearance: none; /* Remove default styling (Chrome/Safari) */
+  appearance: none;
+  width: auto;
+  height: 10px;
+  border-radius: 5px;
+  background-color: none; /* Track color */
+  outline: none;
+}
+
+#password-length-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-dark-four));
+  cursor: pointer;
+  outline: 1px solid hsl(var(--clr-white));
+}
+
+#password-length-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-dark-four));
+  cursor: pointer;
+  outline: 1px solid hsl(var(--clr-white));
+}
+/* Apply styles to the thumb on hover */
+#password-length-range::-webkit-slider-thumb:hover,
+#password-length-range::-moz-range-thumb:hover {
+  background-color: hsl(var(--clr-white));  
+  outline: 1px solid hsl(var(--clr-dark-four));  
+}
+
+/* Apply styles to the thumb on active state */
+#password-length-range::-webkit-slider-thumb:active,
+#password-length-range::-moz-range-thumb:active {
+  background-color: hsl(var(--clr-accent-two));  
+}
+
+/* Password boxes */
 .password-box {
   margin: 0;
   padding: 0;
@@ -236,17 +271,20 @@ body {
   margin-left: 24px;
 }
 
+.password-box:hover {
+  box-shadow: 0 2px 5px hsl( var(--clr-light) );
+}
 
-/* #password-one-el, #password-two-el {
-  cursor: pointer !important;
-  transition: background-color 0.3s ease;
-} */
-  
-/* #password-one-el:hover, #password-two-el:hover {
-  background-color: lightgray;
+/* Popup */
+.popup {
+  position: fixed;
+  font-family: var(--ff-secondary);
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: hsl(var(--clr-dark-three));
+  color: hsl(var(--clr-accent-three));
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px hsl( var(--clr-light) );
 }
-  
-#password-one-el.clicked, #password-two-el.clicked {
-  background-color: yellow;
-}
-   */
